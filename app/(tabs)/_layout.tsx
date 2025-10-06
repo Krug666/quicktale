@@ -1,8 +1,10 @@
+
 import React from 'react';
 import { Platform } from 'react-native';
 import { NativeTabs, Icon, Label } from 'expo-router/unstable-native-tabs';
 import { Stack } from 'expo-router';
 import FloatingTabBar, { TabBarItem } from '@/components/FloatingTabBar';
+import { colors } from '@/styles/commonStyles';
 
 export default function TabLayout() {
   // Define the tabs configuration
@@ -11,7 +13,13 @@ export default function TabLayout() {
       name: '(home)',
       route: '/(tabs)/(home)/',
       icon: 'house.fill',
-      label: 'Home',
+      label: 'Discover',
+    },
+    {
+      name: 'library',
+      route: '/(tabs)/library',
+      icon: 'books.vertical.fill',
+      label: 'Library',
     },
     {
       name: 'profile',
@@ -27,7 +35,11 @@ export default function TabLayout() {
       <NativeTabs>
         <NativeTabs.Trigger name="(home)">
           <Icon sf="house.fill" drawable="ic_home" />
-          <Label>Home</Label>
+          <Label>Discover</Label>
+        </NativeTabs.Trigger>
+        <NativeTabs.Trigger name="library">
+          <Icon sf="books.vertical.fill" drawable="ic_library" />
+          <Label>Library</Label>
         </NativeTabs.Trigger>
         <NativeTabs.Trigger name="profile">
           <Icon sf="person.fill" drawable="ic_profile" />
@@ -47,6 +59,7 @@ export default function TabLayout() {
         }}
       >
         <Stack.Screen name="(home)" />
+        <Stack.Screen name="library" />
         <Stack.Screen name="profile" />
       </Stack>
       <FloatingTabBar tabs={tabs} />
